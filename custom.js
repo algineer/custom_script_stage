@@ -197,6 +197,4 @@ function clip_loop() {
 }
 
 
-//--------------Global_FLIDE--------------
-
-//requestAnimationFrame(responces_loop);
+//test
