@@ -2,7 +2,10 @@
 var guideline = false
 var set_up = true
 var filter_once = false
+
 const filter = document.createElement('textarea')
+const prev = document.createElement('button')
+const next = document.createElement('button')
 
 const commentBoxHTML = '<div class="css-1vft9uj" style="border-top: thin solid red;">' +
     '<div class="css-vujjmw" style="margin-left: 10px;">' +
@@ -27,24 +30,24 @@ var mistake_count_once = false;
 
 //--------------FLIDE_CLIPS--------------
 //qa_question
-function Resolve() {
-    let holder = document.querySelector("#root > main > div > div:nth-child(3) > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-yulmdl > div.css-603q35 > div > div > div")
-    if (holder != null) {
-        let resolved = holder.childNodes[2]
-        if (resolved.ariaSelected != 'true') {
+// function Resolve() {
+//     let holder = document.querySelector("#root > main > div > div:nth-child(3) > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-yulmdl > div.css-603q35 > div > div > div")
+//     if (holder != null) {
+//         let resolved = holder.childNodes[2]
+//         if (resolved.ariaSelected != 'true') {
 
-            let commentBoxes = document.querySelector("#root > main > div > div:nth-child(3) > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-yulmdl > div.css-t32mmx > div.css-hl05sq");
+//             let commentBoxes = document.querySelector("#root > main > div > div:nth-child(3) > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-yulmdl > div.css-t32mmx > div.css-hl05sq");
 
-            let list = commentBoxes.childNodes;
+//             let list = commentBoxes.childNodes;
 
-            list.forEach(
-                function (item) {
-                    if (item.textContent.includes("qa_question"))
-                        item.childNodes[1].firstChild.click();
-                });
-        }
-    }
-};
+//             list.forEach(
+//                 function (item) {
+//                     if (item.textContent.includes("qa_question"))
+//                         item.childNodes[1].firstChild.click();
+//                 });
+//         }
+//     }
+// };
 
 //Major/Minor Selection
 function Mistake() {
@@ -70,9 +73,9 @@ function Mistake() {
         if (!guideline) {
             let textBox = document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.file-drop-container.css-1vry8gg > textarea")
 
-            if (textBox.textContent.includes("Major") || textBox.textContent.includes("Automatic")) {
+            if (textBox.textContent.includes("(Major") || textBox.textContent.includes("(Automatic")) {
                 document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(3) > label:nth-child(1) > input").click()
-            } else if (textBox.textContent.includes("Minor")) {
+            } else if (textBox.textContent.includes("(Minor")) {
                 document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(3) > label:nth-child(2) > input").click()
             }
         }
@@ -105,6 +108,14 @@ function Filter() {
         filter_once = false
         filter.value = ''
     }
+};
+
+
+//Comment Filter
+function FQA() {
+    let text = document.querySelector("#root > main > div > div.css-q2jbf2 > div > div.css-1g3a9gs > div.file-drop-container.css-1vry8gg > textarea")
+    if (text != null) 
+      text.style.height = "300px"
 };
 
 //skip_far_ver
@@ -179,22 +190,39 @@ if (window.location.href.includes("TCLP"))
 function clip_loop() {
     //----set_up-----
     if (set_up) {
-        document.addEventListener("keyup", (event) => {
-            if (event.key == 's') {
-                Verify()
-            }
+        
+        setTimeout(function() {
+            document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div:nth-child(1) > div.css-1npc354 > svg:nth-child(1)").appendChild(prev)
+            document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div:nth-child(1) > div.css-1npc354 > svg:nth-child(2)").appendChild(next)
+        }, 5000);
 
+        document.addEventListener("keydown", (e) => {
+
+            if (e.altKey && e.shiftKey && e.key == "C") {
+                 e.preventDefault()
+                 document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div.css-1x48guh > button:nth-child(2)").click()
+            }
+            if (e.altKey && e.key == ",") {
+                e.preventDefault()
+                prev.click()
+            }
+            if (e.altKey && e.key == ".") {
+                e.preventDefault()
+                next.click()
+            }
         });
         set_up = false
     }
 
     Mistake()
     Filter()
-    Resolve()
     MistakeCount()
+    FQA()
 
     requestAnimationFrame(clip_loop)
 }
 
 
-//test
+//--------------Global_FLIDE--------------
+
+//requestAnimationFrame(responces_loop);
