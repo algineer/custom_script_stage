@@ -29,6 +29,7 @@ noteArea.innerHTML = commentBoxHTML;
 var mistake_count_once = false;
 
 //--------------FLIDE_CLIPS--------------
+
 //qa_question
 // function Resolve() {
 //     let holder = document.querySelector("#root > main > div > div:nth-child(3) > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-yulmdl > div.css-603q35 > div > div > div")
@@ -54,19 +55,19 @@ function Mistake() {
     let holder = document.querySelector("#root > main > div > div:nth-child(3) > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-yulmdl > div.css-603q35 > div > div > div")
     if (holder != null) {
 
-        document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(3) > label:nth-child(3) > input").onclick = function () {
+        document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(3) > label:nth-child(3) > input").onclick = function() {
             guideline = true
         }
 
-        document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(1) > label > input").onclick = function () {
+        document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(1) > label > input").onclick = function() {
             guideline = true
         }
 
-        document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(3) > label:nth-child(1) > input").onclick = function () {
+        document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(3) > label:nth-child(1) > input").onclick = function() {
             guideline = false
         }
 
-        document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(3) > label:nth-child(2) > input").onclick = function () {
+        document.querySelector("#root > main > div > div.css-q2jbf2 > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-1g5ypn2 > div.css-vujjmw > div:nth-child(3) > label:nth-child(2) > input").onclick = function() {
             guideline = false
         }
 
@@ -93,7 +94,7 @@ function Filter() {
         }
 
         comments.childNodes.forEach(
-            function (comment) {
+            function(comment) {
                 if (filter.value == '')
                     comment.style.display = ''
                 else {
@@ -110,33 +111,25 @@ function Filter() {
     }
 };
 
-
-//Comment Filter
-function FQA() {
-    let text = document.querySelector("#root > main > div > div.css-q2jbf2 > div > div.css-1g3a9gs > div.file-drop-container.css-1vry8gg > textarea")
-    if (text != null) 
-      text.style.height = "300px"
-};
-
 //skip_far_ver
-function Verify() {
-    var type = document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div:nth-child(4) > div > div.label-attr-select.css-16bay3 > div.css-1bfjj17")
-    var type_name = []
-    type.childNodes.forEach(
-        function (opt) {
-            type_name.push(opt.title)
-        })
+// function Verify() {
+//     var type = document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div:nth-child(4) > div > div.label-attr-select.css-16bay3 > div.css-1bfjj17")
+//     var type_name = []
+//     type.childNodes.forEach(
+//         function (opt) {
+//             type_name.push(opt.title)
+//         })
 
-    if (document.querySelector("#root > main > div > div.css-q2fgle > div.css-1nice15 > div.css-4j27d4 > div > div").textContent.includes("main")) {
-        if (!(type_name.includes("skip_far"))) {
-            alert("No skip_far in Main")
-        }
-    } else {
-        if ((type_name.includes("skip_far"))) {
-            alert("Skip_far not in Main")
-        }
-    }
-}
+//     if (document.querySelector("#root > main > div > div.css-q2fgle > div.css-1nice15 > div.css-4j27d4 > div > div").textContent.includes("main")) {
+//         if (!(type_name.includes("skip_far"))) {
+//             alert("No skip_far in Main")
+//         }
+//     } else {
+//         if ((type_name.includes("skip_far"))) {
+//             alert("Skip_far not in Main")
+//         }
+//     }
+// }
 
 function MistakeCount() {
     let holder = document.querySelector("#root > main > div > div:nth-child(3) > div > div > div.css-t32mmx > div.css-1gsvi7y > div.css-yulmdl > div.css-603q35 > div > div > div")
@@ -164,7 +157,7 @@ function MistakeCount() {
             let list = commentBoxes.childNodes;
 
             list.forEach(
-                function (item) {
+                function(item) {
                     if (item.textContent.includes("Needs Work (Mistake)"))
                         Major.innerHTML = parseInt(Major.innerHTML) + 1;
                     else if (item.textContent.includes("Needs Work (Minor Mistake)"))
@@ -182,7 +175,24 @@ function MistakeCount() {
         mistake_count_once = false;
 }
 
+//FQA Comment Box Size
+function FQA() {
+    let text = document.querySelector("#root > main > div > div.css-q2jbf2 > div > div.css-1g3a9gs > div.file-drop-container.css-1vry8gg > textarea")
+    if (text != null)
+        text.style.height = "300px"
+};
 
+function Hotkeys() {
+
+    let svg_prev = document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div:nth-child(1) > div.css-1npc354 > svg:nth-child(1)")
+    let svg_next = document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div:nth-child(1) > div.css-1npc354 > svg:nth-child(2)")
+
+    if (svg_prev.childElementCount < 2)
+        svg_prev.appendChild(prev)
+    if (svg_next.childElementCount < 2)
+        svg_next.appendChild(next)
+
+}
 
 if (window.location.href.includes("TCLP"))
     requestAnimationFrame(clip_loop);
@@ -190,17 +200,12 @@ if (window.location.href.includes("TCLP"))
 function clip_loop() {
     //----set_up-----
     if (set_up) {
-        
-        setTimeout(function() {
-            document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div:nth-child(1) > div.css-1npc354 > svg:nth-child(1)").appendChild(prev)
-            document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div:nth-child(1) > div.css-1npc354 > svg:nth-child(2)").appendChild(next)
-        }, 5000);
 
         document.addEventListener("keydown", (e) => {
-
+            if (e.repeat) { return }
             if (e.altKey && e.shiftKey && e.key == "C") {
-                 e.preventDefault()
-                 document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div.css-1x48guh > button:nth-child(2)").click()
+                e.preventDefault()
+                document.querySelector("#root > main > div > div.css-q2fgle > div.css-zabvfl > div.css-1u1sbic > div.css-1x48guh > button:nth-child(2)").click()
             }
             if (e.altKey && e.key == ",") {
                 e.preventDefault()
@@ -217,7 +222,12 @@ function clip_loop() {
     Mistake()
     Filter()
     MistakeCount()
+
     FQA()
+
+    setTimeout(() => {
+        Hotkeys()
+    }, 1000)
 
     requestAnimationFrame(clip_loop)
 }
