@@ -215,6 +215,26 @@ function clip_loop() {
                 e.preventDefault()
                 next.click()
             }
+            if (e.ctrlKey && e.shiftKey && e.key == "C") {
+                e.preventDefault()
+                if (!document.querySelector("#contrastSettings").className.includes("Secondary")) {
+                    document.querySelector("#contrastSettings").click()
+                    document.querySelector("body > div:nth-child(7) > div > div > div > div:nth-child(7) > label > input").click()
+                    document.querySelector("#contrastSettings").click()
+                } else {
+                    document.querySelector("body > div:nth-child(7) > div > div > div > div:nth-child(7) > label > input").click()
+                }
+            }
+            if (e.ctrlKey && e.shiftKey && e.key == "E") {
+                e.preventDefault()
+                if (!document.querySelector("#contrastSettings").className.includes("Secondary")) {
+                    document.querySelector("#contrastSettings").click()
+                    document.querySelector("body > div:nth-child(7) > div > div > div > div:nth-child(8) > label > input").click()
+                    document.querySelector("#contrastSettings").click()
+                } else {
+                    document.querySelector("body > div:nth-child(7) > div > div > div > div:nth-child(8) > label > input").click()
+                }
+            }
         });
         set_up = false
     }
